@@ -8,8 +8,8 @@ const addTask = () => {
   if (newTask.value.trim()) {
     tasks.value.push({
       id: tasks.value.length + 1,
-      text: newTask.value, 
-      completed: false 
+      text: newTask.value,
+      completed: false
     });
     newTask.value = '';
   }
@@ -20,6 +20,11 @@ const deleteTask = (task) => {
   console.log(tasks.value);
 };
 
+const toggle = (task) => {
+  task.completed = !task.completed;
+  console.log(task.completed);
+}
+
 </script>
 
 <template>
@@ -29,12 +34,11 @@ const deleteTask = (task) => {
 
   <ul>
     <li v-for="task in tasks" :key="task.id">
+      <input type="checkbox" :checked="task.completed" @change="toggle(task)" />
       {{ task.text }}
       <button @click="deleteTask(task)">Delete</button>
     </li>
   </ul>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
