@@ -11,10 +11,15 @@ const addTask = () => {
       text: newTask.value, 
       completed: false 
     });
-    console.log(tasks.value);
     newTask.value = '';
   }
 };
+
+const deleteTask = (task) => {
+  tasks.value = tasks.value.filter(t => t !== task);
+  console.log(tasks.value);
+};
+
 </script>
 
 <template>
@@ -25,6 +30,7 @@ const addTask = () => {
   <ul>
     <li v-for="task in tasks" :key="task.id">
       {{ task.text }}
+      <button @click="deleteTask(task)">Delete</button>
     </li>
   </ul>
 </template>
