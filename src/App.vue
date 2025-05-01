@@ -21,6 +21,12 @@ const addTask = () => {
   <h1>Task Manager</h1>
   <input type="text" v-model="newTask" @keyup.enter="addTask" placeholder="Add a new task" />
   <button @click="addTask">Add</button>
+
+  <ul>
+    <li v-for="task in tasks" :key="task.id">
+      {{ task.text }}
+    </li>
+  </ul>
 </template>
 
 <style scoped>
